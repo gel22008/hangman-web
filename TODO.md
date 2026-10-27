@@ -86,22 +86,22 @@ Casual-play endpoints only. Do not add evaluation, leaderboard, or replay routes
 
 ### Tasks
 
-- [ ] Create `server.py`.
-- [ ] Configure Flask.
-- [ ] Serve the browser client static files from Flask.
-- [ ] Add in-memory storage for active games.
-- [ ] Generate unique game IDs.
-- [ ] Implement `POST /api/games`.
-- [ ] Implement `GET /api/games/{game_id}`.
-- [ ] Implement `POST /api/games/{game_id}/guess`.
-- [ ] Validate difficulty input.
-- [ ] Validate guess input.
-- [ ] Return JSON responses consistently.
-- [ ] Return appropriate HTTP status codes.
-- [ ] Handle unknown game IDs.
-- [ ] Handle malformed requests.
-- [ ] Ensure the hidden word is never leaked during an active game.
-- [ ] Add API tests.
+- [x] Create `server.py`.
+- [x] Configure Flask.
+- [x] Serve the browser client static files from Flask.
+- [x] Add in-memory storage for active games.
+- [x] Generate unique game IDs.
+- [x] Implement `POST /api/games`.
+- [x] Implement `GET /api/games/{game_id}`.
+- [x] Implement `POST /api/games/{game_id}/guess`.
+- [x] Validate difficulty input.
+- [x] Validate guess input.
+- [x] Return JSON responses consistently.
+- [x] Return appropriate HTTP status codes.
+- [x] Handle unknown game IDs.
+- [x] Handle malformed requests.
+- [x] Ensure the hidden word is never leaked during an active game.
+- [x] Add API tests.
 
 ### Completion Criteria
 
