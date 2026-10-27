@@ -64,13 +64,13 @@ Word list files already exist. Do not replace them unless a format problem is fo
 
 ### Tasks
 
-- [ ] Create a word-loading module or helper functions.
-- [ ] Load the existing Easy, Medium, and Hard lists from `words/easy.txt`, `words/medium.txt`, and `words/hard.txt`.
-- [ ] Validate that loaded words contain only alphabetic characters.
-- [ ] Remove accidental duplicates when loading.
-- [ ] Support random word selection by difficulty.
-- [ ] Return an error for an invalid difficulty.
-- [ ] Add tests for word loading and word selection.
+- [x] Create a word-loading module or helper functions.
+- [x] Load the existing Easy, Medium, and Hard lists from `words/easy.txt`, `words/medium.txt`, and `words/hard.txt`.
+- [x] Validate that loaded words contain only alphabetic characters.
+- [x] Remove accidental duplicates when loading.
+- [x] Support random word selection by difficulty.
+- [x] Return an error for an invalid difficulty.
+- [x] Add tests for word loading and word selection.
 
 ### Completion Criteria
 
