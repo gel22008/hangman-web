@@ -33,22 +33,22 @@ Terminal client, bots, evaluation, scoring, leaderboard, and logging/replay. Tho
 
 ### Tasks
 
-- [ ] Create the project directory structure needed for the web app.
-- [ ] Create `game.py`.
-- [ ] Implement a `HangmanGame` class.
-- [ ] Store the hidden word internally.
-- [ ] Track guessed letters.
-- [ ] Track incorrect letters.
-- [ ] Track the maximum number of incorrect guesses (six).
-- [ ] Implement single-letter guess validation.
-- [ ] Detect duplicate guesses.
-- [ ] Implement masked-word generation.
-- [ ] Implement win detection.
-- [ ] Implement loss detection.
-- [ ] Implement game status values such as `playing`, `won`, and `lost`.
-- [ ] Implement a method that returns a client-safe game-state dictionary.
-- [ ] Reveal the answer only after the game ends.
-- [ ] Add unit tests for the game engine.
+- [x] Create the project directory structure needed for the web app.
+- [x] Create `game.py`.
+- [x] Implement a `HangmanGame` class.
+- [x] Store the hidden word internally.
+- [x] Track guessed letters.
+- [x] Track incorrect letters.
+- [x] Track the maximum number of incorrect guesses (six).
+- [x] Implement single-letter guess validation.
+- [x] Detect duplicate guesses.
+- [x] Implement masked-word generation.
+- [x] Implement win detection.
+- [x] Implement loss detection.
+- [x] Implement game status values such as `playing`, `won`, and `lost`.
+- [x] Implement a method that returns a client-safe game-state dictionary.
+- [x] Reveal the answer only after the game ends.
+- [x] Add unit tests for the game engine.
 
 ### Completion Criteria
 
