@@ -250,3 +250,44 @@ def test_word_never_appears_in_playing_or_error_responses(client):
         assert "word" not in body
         assert secret not in str(body)
         assert secret not in response.get_data(as_text=True)
+
+
+def test_browser_client_is_served(client):
+    page = client.get("/")
+    assert page.status_code == 200
+    assert b"<title>Hangman</title>" in page.data
+    page.close()
+    for path in ("/static/app.js", "/static/style.css"):
+        asset = client.get(path)
+        assert asset.status_code == 200
+        asset.close()
+
+
+def test_end_to_end_game_then_new_game(client):
+    """Full casual-play flow through HTTP: miss, reload state, win, blocked guess, new game."""
+    game = create_game(client, "easy")
+    game_id = game["game_id"]
+    assert game["pattern"] == "_ _"
+
+    miss = client.post(f"/api/games/{game_id}/guess", json={"letter": "z"}).get_json()
+    assert miss["remaining_guesses"] == 5
+    assert miss["incorrect_letters"] == ["z"]
+    assert_playing_hides_word(miss, "go")
+
+    reloaded = client.get(f"/api/games/{game_id}").get_json()
+    assert reloaded == miss
+
+    client.post(f"/api/games/{game_id}/guess", json={"letter": "g"})
+    won = client.post(f"/api/games/{game_id}/guess", json={"letter": "O"}).get_json()
+    assert won["status"] == "won"
+    assert won["pattern"] == "g o"
+    assert won["word"] == "go"
+    assert won["remaining_guesses"] == 5
+
+    blocked = client.post(f"/api/games/{game_id}/guess", json={"letter": "a"})
+    assert blocked.status_code == 409
+
+    second = create_game(client, "EASY")
+    assert second["game_id"] != game_id
+    assert second["remaining_guesses"] == 6
+    assert second["guessed_letters"] == []

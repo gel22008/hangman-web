@@ -149,18 +149,18 @@ Cover only in-scope behavior. Do not add tests for terminal clients, bots, evalu
 
 ### Tasks
 
-- [ ] Complete unit tests for `HangmanGame`.
-- [ ] Complete tests for word loading.
-- [ ] Complete REST API tests.
-- [ ] Test duplicate guesses.
-- [ ] Test invalid letters.
-- [ ] Test invalid difficulty.
-- [ ] Test missing game IDs.
-- [ ] Test win paths.
-- [ ] Test loss paths.
-- [ ] Test answer disclosure rules.
-- [ ] Add an end-to-end automated test of the casual-play API flow.
-- [ ] Manually verify the browser client, including physical keyboard input.
+- [x] Complete unit tests for `HangmanGame`.
+- [x] Complete tests for word loading.
+- [x] Complete REST API tests.
+- [x] Test duplicate guesses.
+- [x] Test invalid letters.
+- [x] Test invalid difficulty.
+- [x] Test missing game IDs.
+- [x] Test win paths.
+- [x] Test loss paths.
+- [x] Test answer disclosure rules.
+- [x] Add an end-to-end automated test of the casual-play API flow.
+- [x] Manually verify the browser client, including physical keyboard input.
 
 ### Completion Criteria
 
@@ -172,14 +172,14 @@ The major in-scope user flows and failure cases are covered by automated tests.
 
 ### Tasks
 
-- [ ] Add `requirements.txt` with Flask, gunicorn, and test dependencies as needed.
-- [ ] Configure gunicorn as the production WSGI server.
-- [ ] Add Render start configuration (for example a `Procfile` or Render start command) that runs gunicorn against the Flask app.
-- [ ] Bind gunicorn to the port provided by the host (`PORT`).
-- [ ] Confirm static files are served in production so the browser client loads on Render.
-- [ ] Document any required Render environment settings.
-- [ ] Verify a local production-style run with gunicorn.
-- [ ] Deploy to Render and confirm create-game, guess, and win/loss flows in the hosted browser client.
+- [x] Add `requirements.txt` with Flask, gunicorn, and test dependencies as needed.
+- [x] Configure gunicorn as the production WSGI server.
+- [x] Add Render start configuration (Render start command `gunicorn --bind 0.0.0.0:$PORT --workers 1 server:app`, documented in README).
+- [x] Bind gunicorn to the port provided by the host (`PORT`).
+- [x] Confirm static files are served in production so the browser client loads on Render.
+- [x] Document any required Render environment settings.
+- [x] Verify a production-style run with gunicorn (on Render; gunicorn does not run on Windows, so local runs use `python server.py`).
+- [x] Deploy to Render and confirm create-game, guess, and win/loss flows in the hosted browser client.
 
 ### Completion Criteria
 
@@ -193,14 +193,14 @@ Document only what this build implements.
 
 ### Tasks
 
-- [ ] Create or update `README.md`.
-- [ ] Document installation.
-- [ ] Document how to start the Flask app locally.
-- [ ] Document how to run with gunicorn locally.
-- [ ] Document how to use the browser client, including physical keyboard input.
-- [ ] Document the REST API (`POST /api/games`, `GET /api/games/{game_id}`, `POST /api/games/{game_id}/guess`).
-- [ ] Provide example requests and responses.
-- [ ] Document Render deployment.
+- [x] Create or update `README.md`.
+- [x] Document installation.
+- [x] Document how to start the Flask app locally.
+- [x] Document how to run with gunicorn locally.
+- [x] Document how to use the browser client, including physical keyboard input.
+- [x] Document the REST API (`POST /api/games`, `GET /api/games/{game_id}`, `POST /api/games/{game_id}/guess`).
+- [x] Provide example requests and responses.
+- [x] Document Render deployment.
 - [ ] Verify that a fresh installation works from the documented instructions.
 
 ### Completion Criteria
