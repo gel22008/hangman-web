@@ -1,0 +1,234 @@
+:root {
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --muted: #5f6368;
+  --border: #d9d6cf;
+  --accent: #2f5fd0;
+  --accent-text: #ffffff;
+  --hit: #1f7a4a;
+  --hit-bg: #e3f3ea;
+  --miss: #b3261e;
+  --miss-bg: #fbe7e5;
+  --info-bg: #e8eefb;
+  --line: #1d1d1f;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161618;
+    --surface: #212124;
+    --text: #ececec;
+    --muted: #a3a3a8;
+    --border: #3a3a3f;
+    --accent: #7aa2ff;
+    --accent-text: #0f1424;
+    --hit: #7fd6a4;
+    --hit-bg: #1d3328;
+    --miss: #ff9a92;
+    --miss-bg: #3a2120;
+    --info-bg: #1f2840;
+    --line: #ececec;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controls label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+select,
+button {
+  font: inherit;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  min-height: 40px;
+  padding: 0 12px;
+}
+
+button { cursor: pointer; }
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+button:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.drawing {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+}
+
+.drawing line,
+.drawing circle {
+  stroke: var(--line);
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.drawing .part {
+  stroke: var(--miss);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.drawing .part.shown { opacity: 1; }
+
+.pattern {
+  margin: 0 0 8px;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  word-break: break-word;
+}
+
+.message {
+  min-height: 1.5em;
+  margin: 0 0 12px;
+  padding: 0;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.message:not(:empty) { padding: 8px 12px; }
+.message.win { background: var(--hit-bg); color: var(--hit); }
+.message.loss,
+.message.error { background: var(--miss-bg); color: var(--miss); }
+.message.info { background: var(--info-bg); color: var(--accent); }
+
+.stats {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}
+
+.stats dt { color: var(--muted); }
+
+.stats dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.keyboard button {
+  min-height: 44px;
+  padding: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.keyboard button:hover:not(:disabled) { border-color: var(--accent); }
+.keyboard button:disabled { cursor: default; opacity: 0.45; }
+
+.keyboard button.hit {
+  background: var(--hit-bg);
+  border-color: var(--hit);
+  color: var(--hit);
+  opacity: 1;
+}
+
+.keyboard button.miss {
+  background: var(--miss-bg);
+  border-color: var(--miss);
+  color: var(--miss);
+  opacity: 1;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 12px 0 0;
+}
+
+.app[aria-busy="true"] .keyboard { cursor: progress; }
+
+@media (max-width: 560px) {
+  .board {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .drawing { max-width: 160px; }
+  .info { width: 100%; }
+  .keyboard { grid-template-columns: repeat(7, 1fr); }
+}

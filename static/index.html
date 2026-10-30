@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hangman</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="app" id="app" aria-busy="false">
+    <header class="header">
+      <h1>Hangman</h1>
+      <div class="controls">
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button type="button" id="new-game" class="primary">New Game</button>
+      </div>
+    </header>
+
+    <section class="board">
+      <svg id="drawing" class="drawing" viewBox="0 0 200 240" role="img"
+           aria-label="Hangman drawing: 0 of 6 parts">
+        <g class="gallows">
+          <line x1="20" y1="225" x2="150" y2="225"/>
+          <line x1="50" y1="225" x2="50" y2="20"/>
+          <line x1="50" y1="20" x2="130" y2="20"/>
+          <line x1="130" y1="20" x2="130" y2="45"/>
+        </g>
+        <circle class="part" cx="130" cy="65" r="20"/>
+        <line class="part" x1="130" y1="85" x2="130" y2="150"/>
+        <line class="part" x1="130" y1="105" x2="105" y2="132"/>
+        <line class="part" x1="130" y1="105" x2="155" y2="132"/>
+        <line class="part" x1="130" y1="150" x2="108" y2="192"/>
+        <line class="part" x1="130" y1="150" x2="152" y2="192"/>
+      </svg>
+
+      <div class="info">
+        <p class="pattern" id="pattern" aria-live="polite">Loading…</p>
+        <p class="message" id="message" role="status" aria-live="polite"></p>
+        <dl class="stats">
+          <div>
+            <dt>Remaining guesses</dt>
+            <dd id="remaining">6</dd>
+          </div>
+          <div>
+            <dt>Guessed letters</dt>
+            <dd id="guessed">none</dd>
+          </div>
+          <div>
+            <dt>Incorrect letters</dt>
+            <dd id="incorrect">none</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="keyboard" id="keyboard" aria-label="Letter keyboard"></section>
+    <p class="hint">Click a letter or type it on your keyboard.</p>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
